@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
 
     let query = supabase
       .from('combats')
-      .select('*, boxeur1:participants!combats_boxeur1_id_fkey(*), boxeur2:participants!combats_boxeur2_id_fkey(*)')
+      .select('*, boxeur1:participants!boxeur1_id(*), boxeur2:participants!boxeur2_id(*)')
       .order('created_at', { ascending: false });
 
     // Filtres optionnels

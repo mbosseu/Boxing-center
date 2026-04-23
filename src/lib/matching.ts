@@ -16,7 +16,7 @@ export async function matchParticipant(participant: Participant): Promise<{
   // 1. Chercher un combat en attente avec critères compatibles
   const { data: waitingCombats, error: searchError } = await supabase
     .from('combats')
-    .select('*, boxeur1:participants!combats_boxeur1_id_fkey(*)')
+    .select('*, boxeur1:participants!boxeur1_id(*)')
     .eq('statut', 'EN_ATTENTE')
     .is('boxeur2_id', null)
     .eq('sexe', participant.sexe)
@@ -42,7 +42,7 @@ export async function matchParticipant(participant: Participant): Promise<{
         statut: 'CONFIRME',
       })
       .eq('id', combat.id)
-      .select('*, boxeur1:participants!combats_boxeur1_id_fkey(*), boxeur2:participants!combats_boxeur2_id_fkey(*)')
+      .select('*, boxeur1:participants!boxeur1_id(*), boxeur2:participants!boxeur2_id(*)')
       .single();
 
     if (updateError) {
