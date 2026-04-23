@@ -18,9 +18,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "var(--bg-primary)" }}>
+    <div className="admin-layout">
       {/* Sidebar */}
-      <aside style={{ width: "250px", background: "var(--bg-secondary)", borderRight: "1px solid var(--border)", padding: "2rem 1rem", display: "flex", flexDirection: "column" }}>
+      <aside className="admin-sidebar">
         <div style={{ fontFamily: "var(--font-heading)", fontSize: "1.5rem", color: "var(--red)", marginBottom: "3rem", textAlign: "center", letterSpacing: "0.1em" }}>
           ADMIN PANEL
         </div>
@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: "2rem", overflowY: "auto", background: "var(--bg-primary)" }}>
+      <main className="admin-main">
         {children}
       </main>
     </div>
